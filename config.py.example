@@ -2,26 +2,27 @@ import logging
 
 # smtp smarthost to use for relay; this should not be the same host as the receiving server!
 SMTP = {
-    'host': 'localhost',
-    'port': 25,
-    #'user': 'user@example',
-    #'password': 'foobar123',
-    #'tls': False,
+    'host': 'smtp.gmail.com',
+    'port': 465,
+    'user': 'test@gmail.com',
+    'password': 'password',
+    'tls': False,
 }
 
 IMAP = {
-    'host': 'monitored-mailhost.example',
-    'user': 'monitoringtest@example.org',
-    'password': 'foobar123',
+    'host': 'imap.gmail.com',
+    'port': 993,
+    'user': 'test@gmail.com',
+    'password': 'password',
     'mailbox': 'INBOX',
 }
 
 TEST_MAIL = {
-    'sender': 'monitoring-host@monitoring.example.org',
+    'sender': 'john.doe@gmail.com',
     'recipient': IMAP['user'],
     'subject': 'Test-Email {}',
 }
 
 MAX_RETRIES = 30
 LOG_LEVEL = logging.INFO
-TEXTFILE_PATH = '/opt/prometheus/textfiles/mail_delivery.prom'
+TEXTFILE_PATH = '/tmp/mail_delivery.prom'
