@@ -4,7 +4,7 @@ import decimal
 import uuid, logging, config
 import json
 
-from hub import Reducer, DispatchEvent, run_every, SimpleEventMonitor
+from hub import Reducer, DispatchEvent, SimpleEventMonitor, run_every
 from random import SystemRandom
 
 from reducers.test_mail_delivery_reducer import test_mail_delivery_subscription
