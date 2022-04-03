@@ -21,11 +21,11 @@ def email_publisher(redux):
     subject = config.TEST_MAIL['subject'].format(subject_identifier)
     metrics = {'subject': subject}
 
-    ocp_event = DispatchEvent(name="smm",
+    email_send_event = DispatchEvent(name="smm",
                               topic=['email', 'send'],
                               payload=metrics)
 
-    redux.dispatch_event(ocp_event)
+    redux.dispatch_event(email_send_event)
 
 
 def main(redux):
