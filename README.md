@@ -15,7 +15,7 @@ SEM utilizes a [Redux](https://redux.js.org/) like store abstraction and API ove
 
 # How 
 
-```
+```py
 
 import asyncio
 import aiopubsub
