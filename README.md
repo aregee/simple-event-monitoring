@@ -23,10 +23,10 @@ import aiopubsub
 from hub import Reducer, DispatchEvent, SimpleEventMonitor, Store, run_every
 
 
-def test_mail_delivery_subscription(redux: Store):
+def test_delivery_subscription(redux: Store):
 
     async def log_subject(key: aiopubsub.Key, payload: str):
-        print(payload['subject'])
+        print(payload)
 
     async def on_test_event_ack(key: aiopubsub.Key, payload: dict):
         print(f'Received Event {payload} for key = {key}')
@@ -37,7 +37,7 @@ def test_mail_delivery_subscription(redux: Store):
 
     test_reducer = Reducer(event=['*', 'test', 'event'],
                            action=on_test_event_ack)
-    log_reducer = Reducer(event=['*', 'test', 'event'], action=log_subject)
+    log_reducer = Reducer(event=['*', 'log', 'event'], action=log_subject)
 
     redux.combine_reducers(test_reducer, log_reducer)
 
@@ -55,7 +55,7 @@ def test_publisher(redux):
 
 
 def main(redux):
-    test_mail_delivery_subscription(redux)
+    test_delivery_subscription(redux)
     test_publisher(redux)
 
 

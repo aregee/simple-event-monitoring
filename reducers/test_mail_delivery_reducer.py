@@ -178,7 +178,7 @@ def test_mail_delivery_subscription(redux):
     async def write_metrics_to_file(key: aiopubsub.Key, metrics: dict):
         write_textfile(metrics)
 
-    def send_message_with_subject(key: aiopubsub.Key, payload: dict):
+    async def send_message_with_subject(key: aiopubsub.Key, payload: dict):
         start = datetime.now()
         payload['start'] = start
         before_send = datetime.now()
@@ -199,7 +199,6 @@ def test_mail_delivery_subscription(redux):
             payload = {'success': False}
 
     send_email_reducer = Reducer(event=["*", "email", "send"],
-                                 is_async=False,
                                  action=send_message_with_subject)
 
     check_email_reducer = Reducer(event=["*", "email", "sent"],
